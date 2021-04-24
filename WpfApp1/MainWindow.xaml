@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HelloWorld"
         mc:Ignorable="d"
-        Title="Homework 1 Myrick" Height="259.091" Width="278.409">
+        Title="Homework 1 Myrick" Height="260" Width="280">
 
     <StackPanel>
 
         <TextBlock>Enter Name:</TextBlock>
-        <TextBox x:Name="uxName" TextChanged="uxName_TargetUpdated"></TextBox>
+        <TextBox x:Name="uxName" TextChanged="ux_TargetUpdated"></TextBox>
         <TextBlock>Enter Password:</TextBlock>
-        <TextBox x:Name="uxPassword" TextChanged="uxPassword_TargetUpdated"></TextBox>
+        <TextBox x:Name="uxPassword" TextChanged="ux_TargetUpdated"></TextBox>
         <Button x:Name="uxSubmit" IsEnabled="False" Click="uxSubmit_Click">Submit</Button>
 
     </StackPanel>

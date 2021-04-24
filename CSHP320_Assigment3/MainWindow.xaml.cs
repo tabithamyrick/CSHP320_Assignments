@@ -26,10 +26,34 @@ namespace CSHP320_Assigment3
         {
             InitializeComponent();
         }
+        // Private fields to pass the input data
 
         private string uxname;
         private string uxpass;
         
+        // ux inputs field set and check for enable submit
+        private void ux_TargetUpdated(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if(tb.Name == "uxName")
+            {
+                uxname = tb.Text;
+            }
+            else if(tb.Name == "uxPassword")
+            {
+                uxpass = tb.Text;
+            }
+            enableSubmitBtn();
+        }
+
+        // Enable submit button method
+       
+        private void enableSubmitBtn()
+        {
+               uxSubmit.IsEnabled = ((uxpass != null && uxpass != "") && (uxname != null && uxname != ""));
+        }
+
+        // submit button action
 
         private void uxSubmit_Click(object sender, RoutedEventArgs e)
         {
@@ -41,31 +65,6 @@ namespace CSHP320_Assigment3
             window.Show();
         }
 
-
-        private void uxSubmit_TargetUpdated(object sender, RoutedEventArgs e)
-        {
-            if (uxPassword.Text.Length > 0 && uxName.Text.Length > 0)
-            {
-                uxSubmit.IsEnabled = true;
-            }
-        }
-
-        private void uxName_TargetUpdated(object sender, RoutedEventArgs e)
-        {
-            uxname = uxName.Text;
-            enableSubmitBtn();
-        }
-
-        private void uxPassword_TargetUpdated(object sender, RoutedEventArgs e)
-        {
-            uxpass = uxPassword.Text;
-            enableSubmitBtn();
-        }
-
-        private void enableSubmitBtn()
-        {
-               uxSubmit.IsEnabled = ((uxpass != null && uxpass != "") && (uxname != null && uxname != ""));
-        }
-
+               
     }
 }

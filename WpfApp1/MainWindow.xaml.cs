@@ -26,41 +26,40 @@ namespace HelloWorld
         {
             InitializeComponent();
         }
+        // Private fields to pass the input data
 
         private string uxname;
         private string uxpass;
-        
 
-        private void uxSubmit_Click(object sender, RoutedEventArgs e)
+        // ux inputs field set and check for enable submit
+        private void ux_TargetUpdated(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Submitting Password: "+ uxPassword.Text);
-        }
-
-
-        private void uxSubmit_TargetUpdated(object sender, RoutedEventArgs e)
-        {
-            if (uxPassword.Text.Length > 0 && uxName.Text.Length > 0)
+            TextBox tb = (TextBox)sender;
+            if (tb.Name == "uxName")
             {
-                uxSubmit.IsEnabled = true;
+                uxname = tb.Text;
             }
-        }
-
-        private void uxName_TargetUpdated(object sender, RoutedEventArgs e)
-        {
-            uxname = uxName.Text;
+            else if (tb.Name == "uxPassword")
+            {
+                uxpass = tb.Text;
+            }
             enableSubmitBtn();
         }
 
-        private void uxPassword_TargetUpdated(object sender, RoutedEventArgs e)
-        {
-            uxpass = uxPassword.Text;
-            enableSubmitBtn();
-        }
+        // Enable submit button method
 
         private void enableSubmitBtn()
         {
-               uxSubmit.IsEnabled = ((uxpass != null && uxpass != "") && (uxname != null && uxname != ""));
+            uxSubmit.IsEnabled = ((uxpass != null && uxpass != "") && (uxname != null && uxname != ""));
         }
+
+        // submit button action
+
+        private void uxSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Submitting Password: " + uxPassword.Text);
+        }
+
 
     }
 }
