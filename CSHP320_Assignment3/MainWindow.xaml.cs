@@ -28,8 +28,8 @@ namespace CSHP320_Assigment3
         }
         // Private fields to pass the input data
 
-        private string uxname;
-        private string uxpass;
+        private string uxname = "";
+        private string uxpass = "";
         
         // ux inputs field set and check for enable submit
         private void ux_TargetUpdated(object sender, RoutedEventArgs e)
@@ -50,7 +50,7 @@ namespace CSHP320_Assigment3
        
         private void enableSubmitBtn()
         {
-               uxSubmit.IsEnabled = ((uxpass != null && uxpass != "") && (uxname != null && uxname != ""));
+               uxSubmit.IsEnabled = (uxpass != "" && uxname != "");
         }
 
         // submit button action

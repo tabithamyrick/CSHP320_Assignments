@@ -29,12 +29,12 @@ namespace CSHP320_Assignment4
       
         private void ZipSubmit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Zip Code is: " + ZipCode.Text);
+            MessageBox.Show("Zip Code is: " + ZipCode.Text.ToUpper());
         }
 
         private void ZipCode_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ZipSubmit.IsEnabled = (Regex.Match(ZipCode.Text, @"^\d{5}(?:[-\s]\d{4})?$|^[A-Z]{1}\d{1}[A-Z]{1}\d{1}[A-Z]{1}\d{1}$").Success);
+            ZipSubmit.IsEnabled = (Regex.Match(ZipCode.Text.ToUpper(), @"^\d{5}(?:[-\s]\d{4})?$|^[A-Z]{1}\d{1}[A-Z]{1}\d{1}[A-Z]{1}\d{1}$").Success);
         }
     }
 }
