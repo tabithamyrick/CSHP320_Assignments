@@ -1,23 +1,15 @@
-﻿using System;
+﻿//Thaddaeus Myrick CSHP 320 Assignment 5
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace CSHP320_Assignment5
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+  
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -62,24 +54,25 @@ namespace CSHP320_Assignment5
                     (checkArray.Contains("0,2") & checkArray.Contains("1,2") & checkArray.Contains("2,2")))
                 {
                     uxTurn.Text = turn.ToString() + " Wins";
+                    DisableBoard();
                 }
                 else
                 {
-                    SwapTurns(btn);
+                    SwapTurns();
                 }
             }
             else if(checkArray.Length == 5)
             {
                 uxTurn.Text = "CAT";
-                ClearBoard();
+                DisableBoard();
             }
             else
             {
-                SwapTurns(btn);
+                SwapTurns();
             }
         }
 
-        private void SwapTurns(Button btn)
+        private void SwapTurns()
         {
             if(turn == "X")
             {
@@ -99,6 +92,7 @@ namespace CSHP320_Assignment5
             uxTurn.Text = "X's Turn";
             turn = "X";
             ScoreDictionary.Clear();
+            DisableBoard();
             ClearBoard();
         }
 
@@ -114,6 +108,18 @@ namespace CSHP320_Assignment5
         private void uxExit_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private bool boardDiabled = true;
+
+        private void DisableBoard()
+        {
+            boardDiabled = !boardDiabled;
+            var btnList = uxGrid.Children;
+            foreach (Button x in btnList)
+            {
+                x.IsEnabled = boardDiabled;
+            }
         }
     }
 }
